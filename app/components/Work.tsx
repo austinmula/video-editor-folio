@@ -13,6 +13,8 @@ interface Project {
   videoId?: string;
   link: string;
   category: string;
+  role?: string;
+  techniques?: string[];
 }
 
 const projects: Project[] = [
@@ -49,33 +51,39 @@ const projects: Project[] = [
   },
   {
     id: 3,
-    title: "High-Retention Finance Hook",
+    title: "The cycle continues",
     description:
-      "Short-form edit engineered around proven hook formulas and pattern interrupts. Drop-off points identified via retention analysis and re-cut until scroll-stopping.",
+      "Text pop-up hook draws viewers in instantly. Minimalist text overlays keep focus on the visuals while subtle sound design builds atmosphere throughout.",
     platform: "tiktok",
-    tools: ["CapCut", "Hook Engineering", "Retention Analysis"],
+    tools: ["CapCut", "Remove.bg"],
     link: "https://www.tiktok.com/@purityy_ngugi/video/7446765417793604870",
     category: "Short-Form",
+    role: "Video Editing, Color Grading, Sound Design, Story Structuring",
+    techniques: ["Text pop-up hook", "Subtle sound design", "Minimalist text overlays"],
   },
   {
     id: 4,
-    title: "Generative AI B-Roll Showcase",
+    title: "POV : Life in the village",
     description:
-      "Seamlessly blended AI-generated visuals using Higgsfield and Kling AI into real footage. Solo-produced broadcast-quality content without a full studio team.",
+      "Slow pacing for emotional buildup anchored by a text hook and cinematic colour grade. Sound design layered throughout to reinforce mood and story structure.",
     platform: "tiktok",
-    tools: ["CapCut", "Higgsfield", "Kling AI"],
+    tools: ["CapCut", "DaVinci Resolve"],
     link: "https://www.tiktok.com/@purityy_ngugi/video/7595273969977150732",
-    category: "AI Content",
+    category: "Cinematic",
+    role: "Video Editing, Color Grading, Sound Design, Story Structuring",
+    techniques: ["Text hook", "Subtle sound design", "Cinematic color grading", "Slow pacing for emotional buildup"],
   },
   {
     id: 8,
-    title: "Viral Content Strategy Edit",
+    title: "AI wouldn't get it",
     description:
-      "Hook-led short-form content built for maximum watch-time. Pacing, sound design and visual rhythm all dialled to platform-specific retention patterns.",
+      "Visual and text pop-up hooks combined with voiceover layering for maximum retention. Cinematic colour grade and minimalist overlays polished to broadcast quality.",
     platform: "tiktok",
-    tools: ["CapCut", "Hook Engineering"],
+    tools: ["CapCut", "DaVinci Resolve", "Kling AI", "ElevenLabs", "Remove.bg"],
     link: "https://www.tiktok.com/@purityy_ngugi/video/7557413300896566539",
-    category: "Short-Form",
+    category: "AI Content",
+    role: "Video Editing, Color Grading, Sound Design, Story Structuring",
+    techniques: ["Visual hook", "Text pop-up hook", "Subtle sound design", "Minimalist text overlays", "Voiceover layering", "Cinematic color grading"],
   },
   {
     id: 5,
@@ -83,9 +91,11 @@ const projects: Project[] = [
     description:
       "Polished brand campaign translating business goals into a cohesive visual story. Defined KPIs for engagement, reach and saves hit within the first week of launch.",
     platform: "instagram",
-    tools: ["DaVinci Resolve", "Canva Pro", "Midjourney"],
+    tools: ["CapCut"],
     link: "https://www.instagram.com/purityy_ngugi/reel/DN6WP7OgDnw/",
     category: "Brand Content",
+    role: "Video Editing, Color Grading, Sound Design, Story Structuring",
+    techniques: ["VFX", "SFX", "Text animation"],
   },
   {
     id: 6,
@@ -93,9 +103,11 @@ const projects: Project[] = [
     description:
       "Fast-cut product reveal engineered for maximum saves and shares. Every edit decision informed by watch-time data — pacing, music hits and colour all dialled to retention.",
     platform: "instagram",
-    tools: ["CapCut", "Midjourney", "Canva Pro"],
+    tools: ["CapCut"],
     link: "https://www.instagram.com/purityy_ngugi/reel/DNkVMSVszG3/",
     category: "Short-Form",
+    role: "Video Editing, Color Grading, Sound Design, Story Structuring",
+    techniques: ["VFX", "SFX", "Text animation"],
   },
   {
     id: 9,
@@ -103,9 +115,11 @@ const projects: Project[] = [
     description:
       "Narrative-driven reel blending original footage with generative visuals. Colour graded for a cinematic, high-contrast finish with strong visual identity.",
     platform: "instagram",
-    tools: ["DaVinci Resolve", "Higgsfield", "Canva Pro"],
+    tools: ["CapCut"],
     link: "https://www.instagram.com/purityy_ngugi/reel/DM2LhB3sp98/",
     category: "Storytelling",
+    role: "Video Editing, Color Grading, Sound Design, Story Structuring",
+    techniques: ["VFX", "SFX", "Text animation"],
   },
 ];
 
@@ -386,10 +400,31 @@ export default function Work() {
                     <h3 className="text-lg font-semibold text-[#f0ece4] mb-3 leading-snug">
                       {project.title}
                     </h3>
-                    <p className="text-sm text-[#6b6b6b] leading-relaxed mb-5">
+                    {project.role && (
+                      <p className="text-xs text-[#c9a53d]/70 tracking-wide mb-2">
+                        {project.role}
+                      </p>
+                    )}
+                    <p className="text-sm text-[#6b6b6b] leading-relaxed mb-4">
                       {project.description}
                     </p>
+                    {project.techniques && project.techniques.length > 0 && (
+                      <div className="mb-4">
+                        <p className="text-xs text-[#3a3a3a] tracking-widest uppercase mb-2">Techniques</p>
+                        <div className="flex flex-wrap gap-1.5">
+                          {project.techniques.map((t) => (
+                            <span
+                              key={t}
+                              className="text-xs px-2 py-0.5 rounded border border-[#c9a53d]/20 text-[#c9a53d]/70"
+                            >
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                     <div className="flex flex-wrap gap-1.5">
+                      <p className="w-full text-xs text-[#3a3a3a] tracking-widest uppercase mb-1">Tools</p>
                       {project.tools.map((tool) => (
                         <span
                           key={tool}
