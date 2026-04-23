@@ -265,7 +265,7 @@ export default function Work() {
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                 allowFullScreen
                 scrolling="no"
-                className="absolute inset-0 w-full h-full border-0"
+                className="absolute inset-0  h-full border-0"
               />
             ) : (
               <div
@@ -283,19 +283,48 @@ export default function Work() {
               <article
                 key={project.id}
                 className={`flex flex-col md:flex-row rounded-2xl border border-[#1a1a1a] bg-[#0e0e0e] overflow-hidden card-hover ${
-                  !isYouTube ? 'md:h-[420px]' : ''
+                  !isYouTube ? 'md:h-[520px]' : ''
                 }`}
               >
                 {/* Video side */}
-                <div
-                  className={`relative shrink-0 overflow-hidden bg-black ${
-                    isYouTube
-                      ? 'aspect-video md:w-[58%]'
-                      : 'aspect-[9/16] md:aspect-[9/16] md:h-full md:w-auto'
-                  }`}
-                >
-                  {videoEmbed}
-                </div>
+                {isYouTube ? (
+                  <div className="relative shrink-0 overflow-hidden bg-black aspect-video md:w-[58%]">
+                    {videoEmbed}
+                  </div>
+                ) : (
+                  // Portrait: 58% wide container, video contained at 9:16 and centred
+                  <div
+                    className="relative shrink-0 overflow-hidden flex items-center justify-center aspect-[9/16] md:w-[58%] md:aspect-auto md:self-stretch"
+                    style={{ background: `linear-gradient(135deg, ${config.gradientFrom}, ${config.gradientTo})` }}
+                  >
+                    <div className="relative h-full aspect-[9/16] overflow-hidden">
+                      {instagramEmbed ? (
+                        <iframe
+                          src={instagramEmbed}
+                          title={project.title}
+                          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                          allowFullScreen
+                          scrolling="no"
+                          className="absolute inset-0 w-full h-full border-0"
+                        />
+                      ) : tiktokEmbed ? (
+                        <iframe
+                          src={tiktokEmbed}
+                          title={project.title}
+                          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                          allowFullScreen
+                          scrolling="no"
+                          className="absolute inset-0 w-full h-full border-0"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 opacity-50">
+                          {config.icon}
+                          {config.playIcon}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
 
                 {/* Info side */}
                 <div className="flex-1 flex flex-col justify-between p-6 md:p-8">
