@@ -87,7 +87,7 @@ const projects: Project[] = [
   },
   {
     id: 5,
-    title: "Brand Identity Campaign Reel",
+    title: "Creators sitdown interview compilation",
     description:
       "Polished brand campaign translating business goals into a cohesive visual story. Defined KPIs for engagement, reach and saves hit within the first week of launch.",
     platform: "instagram",
@@ -99,7 +99,7 @@ const projects: Project[] = [
   },
   {
     id: 6,
-    title: "Product Launch Viral Reel",
+    title: "Cinematic Vlog Edit",
     description:
       "Fast-cut product reveal engineered for maximum saves and shares. Every edit decision informed by watch-time data — pacing, music hits and colour all dialled to retention.",
     platform: "instagram",
